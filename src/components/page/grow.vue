@@ -14,16 +14,12 @@
                 v-for="crop in item"
                 style="margin-bottom:20px"
                 :key="crop.id">
-          <el-card @click.native='clickCrop(crop.name)'>
+          <el-card @click.native='clickCrop(crop.name)'
+                   shadow="hover">
             <img :src="CDN +crop.img"
                  class="cropimg">
-            <div style="padding: 14px;">
-              <span style="font-size: 18px;   white-space: nowrap;  ">{{crop.name}}</span>
-            </div>
-            <div class="bottom clearfix">
-
-              <el-button type="text"
-                         class="button">查看详情</el-button>
+            <div style="padding: 14px 14px 10px; text-align:center">
+              <span style="font-size: 18px;   white-space: nowrap;  ">{{crop.name}}栽培</span>
             </div>
           </el-card>
         </el-col>
@@ -65,23 +61,25 @@
     </el-dialog>
     <el-dialog :visible.sync="detailVisible"
                title="栽培信息">
-      <h2>
-        {{details.name}}
-      </h2>
-      <el-tabs v-model="detailActive">
-        <el-tab-pane label="技术介绍一"
-                     name="first">
-          <pre>{{details.point1}}</pre>
-        </el-tab-pane>
-        <el-tab-pane label="技术介绍二"
-                     name="second">
-          <pre>{{details.point2}}</pre>
-        </el-tab-pane>
-        <el-tab-pane label="技术介绍三"
-                     name="third">
-          <pre>{{details.point3}}</pre>
-        </el-tab-pane>
-      </el-tabs>
+      <div style="min-height:60vh">
+        <h2>
+          {{details.name}}
+        </h2>
+        <el-tabs v-model="detailActive">
+          <el-tab-pane label="技术介绍一"
+                       name="first">
+            <pre>{{details.point1}}</pre>
+          </el-tab-pane>
+          <el-tab-pane label="技术介绍二"
+                       name="second">
+            <pre>{{details.point2}}</pre>
+          </el-tab-pane>
+          <el-tab-pane label="技术介绍三"
+                       name="third">
+            <pre>{{details.point3}}</pre>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
       <div slot="footer"
            class="dialog-footer">
         <el-button type="primary"
@@ -168,7 +166,7 @@ export default {
 .cropimg {
   width: 100%;
   height: auto;
-  border-radius: 50%;
+  border-radius: 6%;
 }
 pre {
   white-space: pre-wrap; /* css3.0 */

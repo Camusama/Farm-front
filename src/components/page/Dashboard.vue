@@ -40,7 +40,8 @@
               :sm='24'>
         <el-row :gutter="20"
                 class="mgb20">
-          <el-col :span="8">
+          <el-col :lg='8'
+                  :sm='24'>
             <el-card shadow="hover"
                      :body-style="{padding: '0px'}">
               <div class="grid-content grid-con-1">
@@ -52,7 +53,8 @@
               </div>
             </el-card>
           </el-col>
-          <el-col :span="8">
+          <el-col :lg='8'
+                  :sm='24'>
             <el-card shadow="hover"
                      :body-style="{padding: '0px'}">
               <div class="grid-content grid-con-2">
@@ -66,7 +68,8 @@
               </div>
             </el-card>
           </el-col>
-          <el-col :span="8">
+          <el-col :lg='8'
+                  :sm='24'>
             <el-card shadow="hover"
                      :body-style="{padding: '0px'}">
               <div class="grid-content grid-con-3">
@@ -191,30 +194,6 @@
         </el-card>
       </el-col>
     </el-row>
-    <!-- <el-row :gutter="20">
-      <el-col :md='12'
-              :sm='24'>
-        <el-card shadow="hover">
-          <schart ref="bar"
-                  class="schart"
-                  canvasId="bar"
-                  :data="data"
-                  type="bar"
-                  :options="options"></schart>
-        </el-card>
-      </el-col>
-      <el-col :md='12'
-              :sm='24'>
-        <el-card shadow="hover">
-          <schart ref="line"
-                  class="schart"
-                  canvasId="line"
-                  :data="data"
-                  type="line"
-                  :options="options2"></schart>
-        </el-card>
-      </el-col>
-    </el-row> -->
   </div>
 </template>
 
@@ -282,7 +261,6 @@ export default {
     }
   },
   created () {
-    this.handleListener();
     this.changeDate();
   },
   mounted () {
@@ -292,13 +270,6 @@ export default {
     let day = nowDate.getDate();
     this.datetime = `${year}-${month}-${day}`;
   },
-  activated () {
-    this.handleListener();
-  },
-  deactivated () {
-    window.removeEventListener('resize', this.renderChart);
-    bus.$off('collapse', this.handleBus);
-  },
   methods: {
     changeDate () {
       const now = new Date().getTime();
@@ -307,20 +278,7 @@ export default {
         item.name = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
       })
     },
-    handleListener () {
-      bus.$on('collapse', this.handleBus);
-      // 调用renderChart方法对图表进行重新渲染
-      window.addEventListener('resize', this.renderChart)
-    },
-    handleBus (msg) {
-      setTimeout(() => {
-        this.renderChart()
-      }, 300);
-    },
-    renderChart () {
-      this.$refs.bar.renderChart();
-      this.$refs.line.renderChart();
-    }
+
   }
 }
 

@@ -39,23 +39,25 @@
     </div>
     <el-dialog :visible.sync="detailVisible"
                title="安全信息">
-      <h2>
-        {{details.safety}}
-      </h2>
-      <el-tabs v-model="detailActive">
-        <el-tab-pane label="安全知识一"
-                     name="first">
-          <pre>{{details.point1}}</pre>
-        </el-tab-pane>
-        <el-tab-pane label="安全知识二"
-                     name="second">
-          <pre>{{details.point2}}</pre>
-        </el-tab-pane>
-        <el-tab-pane label="安全知识三"
-                     name="third">
-          <pre>{{details.point3}}</pre>
-        </el-tab-pane>
-      </el-tabs>
+      <div style="min-height:60vh">
+        <h2>
+          {{details.safety}}
+        </h2>
+        <el-tabs v-model="detailActive">
+          <el-tab-pane label="安全知识一"
+                       name="first">
+            <pre>{{details.point1}}</pre>
+          </el-tab-pane>
+          <el-tab-pane label="安全知识二"
+                       name="second">
+            <pre>{{details.point2}}</pre>
+          </el-tab-pane>
+          <el-tab-pane label="安全知识三"
+                       name="third">
+            <pre>{{details.point3}}</pre>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
       <div slot="footer"
            class="dialog-footer">
 

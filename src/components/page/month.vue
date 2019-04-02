@@ -14,16 +14,12 @@
                 v-for="crop in item"
                 style="margin-bottom:20px"
                 :key="crop.id">
-          <el-card @click.native='clickCrop(crop.name)'>
+          <el-card @click.native='clickCrop(crop.name)'
+                   shadow="hover">
             <img :src="CDN +crop.img"
                  class="cropimg">
-            <div style="padding: 14px;">
-              <span style="font-size: 18px;   white-space: nowrap;  ">{{crop.name}}</span>
-            </div>
-            <div class="bottom clearfix">
-
-              <el-button type="text"
-                         class="button">查看详情</el-button>
+            <div style="padding:14px 14px 10px;text-align:center">
+              <span style="font-size: 18px;   white-space: nowrap;  ">{{crop.name}}农事</span>
             </div>
           </el-card>
         </el-col>
@@ -65,23 +61,25 @@
     </el-dialog>
     <el-dialog :visible.sync="detailVisible"
                title="栽培信息">
-      <h2>
-        {{ clickCropname +':'+ details.name}}
-      </h2>
-      <el-tabs v-model="detailActive">
-        <el-tab-pane label="本月气候"
-                     name="first">
-          <pre>{{details.weather}}</pre>
-        </el-tab-pane>
-        <el-tab-pane label="本月农事"
-                     name="second">
-          <pre>{{details.farm}}</pre>
-        </el-tab-pane>
-        <el-tab-pane label="注意事项"
-                     name="third">
-          <pre>{{details.warn}}</pre>
-        </el-tab-pane>
-      </el-tabs>
+      <div style="min-height:60vh">
+        <h2>
+          {{ clickCropname +':'+ details.name}}
+        </h2>
+        <el-tabs v-model="detailActive">
+          <el-tab-pane label="本月气候"
+                       name="first">
+            <pre>{{details.weather}}</pre>
+          </el-tab-pane>
+          <el-tab-pane label="本月农事"
+                       name="second">
+            <pre>{{details.farm}}</pre>
+          </el-tab-pane>
+          <el-tab-pane label="注意事项"
+                       name="third">
+            <pre>{{details.warn}}</pre>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
       <div slot="footer"
            class="dialog-footer">
         <el-button type="primary"

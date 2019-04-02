@@ -14,17 +14,19 @@
                 v-for="crop in item"
                 style="margin-bottom:20px"
                 :key="crop.id">
-          <el-card @click.native='clickCrop(crop.name)'>
+          <el-card @click.native='clickCrop(crop.name)'
+                   shadow="hover"
+                   :body-style="{ padding: '0px' }">
             <img :src="CDN +crop.img"
                  class="cropimg">
-            <div style="padding: 14px;">
-              <span style="font-size: 18px;   white-space: nowrap;  ">{{crop.name}}</span>
+            <div style="padding:5px 14px 10px;">
+              <span style="font-size: 18px;   white-space: nowrap;  ">{{crop.name}}良种</span>
+              <div class="bottom clearfix">
+                <el-button type="text"
+                           class="button">查看详情</el-button>
+              </div>
             </div>
-            <div class="bottom clearfix">
 
-              <el-button type="text"
-                         class="button">查看详情</el-button>
-            </div>
           </el-card>
         </el-col>
       </el-row>
@@ -65,23 +67,25 @@
     </el-dialog>
     <el-dialog :visible.sync="detailVisible"
                title="良种信息">
-      <h2>
-        {{details.name}}
-      </h2>
-      <el-tabs v-model="detailActive">
-        <el-tab-pane label="特性特征"
-                     name="first">
-          <pre>{{details.feature}}</pre>
-        </el-tab-pane>
-        <el-tab-pane label="品质产量"
-                     name="second">
-          <pre>{{details.quality}}</pre>
-        </el-tab-pane>
-        <el-tab-pane label="栽培要点"
-                     name="third">
-          <pre>{{details.keypoint}}</pre>
-        </el-tab-pane>
-      </el-tabs>
+      <div style="min-height:60vh">
+        <h2>
+          {{details.name}}
+        </h2>
+        <el-tabs v-model="detailActive">
+          <el-tab-pane label="特性特征"
+                       name="first">
+            <pre>{{details.feature}}</pre>
+          </el-tab-pane>
+          <el-tab-pane label="品质产量"
+                       name="second">
+            <pre>{{details.quality}}</pre>
+          </el-tab-pane>
+          <el-tab-pane label="栽培要点"
+                       name="third">
+            <pre>{{details.keypoint}}</pre>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
       <div slot="footer"
            class="dialog-footer">
         <el-button type="primary"
@@ -168,7 +172,7 @@ export default {
 .cropimg {
   width: 100%;
   height: auto;
-  border-radius: 50%;
+  border-radius: 4px;
 }
 pre {
   white-space: pre-wrap; /* css3.0 */

@@ -39,23 +39,25 @@
     </div>
     <el-dialog :visible.sync="detailVisible"
                title="灾害信息">
-      <h2>
-        {{details.disaster}}
-      </h2>
-      <el-tabs v-model="detailActive">
-        <el-tab-pane label="基本介绍"
-                     name="first">
-          <pre>{{details.point1}}</pre>
-        </el-tab-pane>
-        <el-tab-pane label="注意事项"
-                     name="second">
-          <pre>{{details.point2}}</pre>
-        </el-tab-pane>
-        <el-tab-pane label="使用方法"
-                     name="third">
-          <pre>{{details.point3}}</pre>
-        </el-tab-pane>
-      </el-tabs>
+      <div style="min-height:60vh">
+        <h2>
+          {{details.disaster}}
+        </h2>
+        <el-tabs v-model="detailActive">
+          <el-tab-pane label="基本介绍"
+                       name="first">
+            <pre>{{details.point1}}</pre>
+          </el-tab-pane>
+          <el-tab-pane label="注意事项"
+                       name="second">
+            <pre>{{details.point2}}</pre>
+          </el-tab-pane>
+          <el-tab-pane label="使用方法"
+                       name="third">
+            <pre>{{details.point3}}</pre>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
       <div slot="footer"
            class="dialog-footer">
 

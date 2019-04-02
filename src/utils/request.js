@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Message, MessageBox } from 'element-ui'
 const service = axios.create({
-  baseURL: 'http://localhost:7001/front', // api 的 base_url
+  baseURL: 'http://39.108.180.157:7001/front', // api 的 base_url
   timeout: 5000, // 请求超时时间
   withCredentials: true
 })
@@ -9,7 +9,7 @@ const service = axios.create({
 service.interceptors.response.use(
   response => {
     const res = response.data
-    console.log('axios', response)
+    // console.log('axios', response)
     if (res.code !== 0) {
       Message({
         message: res.msg,

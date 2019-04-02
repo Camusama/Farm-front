@@ -6,7 +6,7 @@
       </el-breadcrumb>
     </div>
     <div class="container">
-      <el-row :gutter="20"
+      <el-row :gutter="26"
               v-for="(item,index) in crops"
               :key="index">
         <el-col :md=' {span: 5, push: 2}'
@@ -14,17 +14,21 @@
                 v-for="crop in item"
                 style="margin-bottom:20px"
                 :key="crop.id">
-          <el-card @click.native='clickCrop(crop.name)'>
+          <el-card @click.native='clickCrop(crop.name)'
+                   shadow="hover"
+                   :body-style="{ padding: '0px' }">
             <img :src="CDN +crop.img"
                  class="cropimg">
-            <div style="padding: 14px;">
-              <span style="font-size: 18px;   white-space: nowrap;  ">{{crop.name}}</span>
-            </div>
-            <div class="bottom clearfix">
+            <div style="padding:5px 14px 10px;">
+              <span style="font-size: 18px;   white-space: nowrap; ">{{crop.name}}病害</span>
+              <br>
+              <div class="bottom clearfix">
 
-              <el-button type="text"
-                         class="button">查看详情</el-button>
+                <el-button type="text"
+                           class="button">查看详情</el-button>
+              </div>
             </div>
+
           </el-card>
         </el-col>
       </el-row>
@@ -40,15 +44,16 @@
                   v-for="item in temp"
                   style="margin-bottom:20px"
                   :key="item.id">
-            <el-card @click.native='clickItem(item.id)'>
+            <el-card @click.native='clickItem(item.id)'
+                     :body-style="{ padding: '0px' }">
               <img :src="CDN +item.img"
                    class="cropimg">
-              <div>
+              <div style="padding:3px 14px 8px;">
                 <span class='namespan'>{{item.name}}</span>
-              </div>
-              <div class="bottom clearfix">
-                <el-button type="text"
-                           class="button">查看详情</el-button>
+                <div class="bottom clearfix">
+                  <el-button type="text"
+                             class="button">查看详情</el-button>
+                </div>
               </div>
             </el-card>
           </el-col>
@@ -63,23 +68,26 @@
     </el-dialog>
     <el-dialog :visible.sync="detailVisible"
                title="病害信息">
-      <h2>
-        {{details.name}}
-      </h2>
-      <el-tabs v-model="detailActive">
-        <el-tab-pane label="基本介绍"
-                     name="first">
-          <pre>{{details.summary}}</pre>
-        </el-tab-pane>
-        <el-tab-pane label="发病特点"
-                     name="second">
-          <pre>{{details.feature}}</pre>
-        </el-tab-pane>
-        <el-tab-pane label="防治方法"
-                     name="third">
-          <pre>{{details.keypoint}}</pre>
-        </el-tab-pane>
-      </el-tabs>
+      <div style="min-height:60vh">
+        <h2>
+          {{details.name}}
+        </h2>
+        <el-tabs v-model="detailActive">
+          <el-tab-pane label="基本介绍"
+                       name="first">
+            <pre>{{details.summary}}</pre>
+          </el-tab-pane>
+          <el-tab-pane label="发病特点"
+                       name="second">
+            <pre>{{details.feature}}</pre>
+          </el-tab-pane>
+          <el-tab-pane label="防治方法"
+                       name="third">
+            <pre>{{details.keypoint}}</pre>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
+
       <div slot="footer"
            class="dialog-footer">
 
@@ -166,7 +174,7 @@ export default {
   vertical-align: absmiddle;
   width: 100%;
   height: auto;
-  border-radius: 50%;
+  border-radius: 3px;
 }
 pre {
   white-space: pre-wrap; /* css3.0 */
